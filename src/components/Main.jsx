@@ -18,9 +18,6 @@ const Main = () => {
 
         setPhonetic(false)
     },[word])
-
-    // console.log(meanings[0].meanings[0].definitions[0].definition)
-    console.log(meanings)
     const arr = Array.isArray(meanings) ? meanings.map((mean)=>mean.phonetics.length > 0) : null
     let a;
     if(arr !== null){
@@ -28,18 +25,16 @@ const Main = () => {
             a = a | element
         });
     }
-    console.log(phonetic)
-    console.log(a)
 
     return ( 
         <div>
-            <div className="w-2/5 mx-auto my-4">
-                <div class="relative mt-1 rounded-md shadow-md">
+            <div className="w-5/6 mx-auto my-4 md:w-2/5">
+                <div class="relative mt-1 rounded-md shadow-md word-input">
                     <input 
                     type="text" 
                     name="price" 
                     id="price" 
-                    className="block w-full h-12 p-2 rounded-md capitalize border-slate-600 pl-7 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-md" 
+                    class="block w-full h-12 p-2 rounded-md capitalize border-slate-600 pl-7 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-md" 
                     placeholder="Enter Word" 
                     onChange={(e)=>setWord(e.target.value)}/>
                     <div class="absolute inset-y-0 right-0 flex items-center">
@@ -47,14 +42,15 @@ const Main = () => {
                     </div>
                 </div>
             </div>
-            <div className="my-2 mx-auto w-4/6">
+            <div className="m-2 md:w-4/6 mx-auto">
                 <h1 className="text-5xl font-medium text-center m-2 capitalize tracking-wide">{meanings ? word : ""}</h1>
                 {(Array.isArray(meanings) && word) ? 
                 <>
+                <div>
                 {(a>0 && phonetic) ? <h3 className="text-xl indent-6 tracking-wide font-semibold text-teal-900">Phonetics:</h3>: ""}
                 {meanings.map((mean)=>{
                     return <Phonetics phonetic={mean.phonetics} setPhonetic={setPhonetic}/>
-                })}
+                })}</div>
                 <h3 className="text-xl indent-6 tracking-wide font-semibold text-teal-900">Definitions:</h3>
                 { meanings.map((mean)=>{
                     return <Meanings mean={mean.meanings}/>
