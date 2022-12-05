@@ -33,17 +33,18 @@ const Main = () => {
                 </div>
             </div>
             <div className="m-2 md:w-4/6 mx-auto">
-                <h1 className="text-5xl font-medium text-center m-2 capitalize tracking-wide">{meanings ? word : ""}</h1>
+                <h1 className="text-6xl font-medium text-center m-4 capitalize tracking-wide">{meanings ? word : ""}</h1>
                 {(Array.isArray(meanings) && word) ? 
                 <>
-                {/* <div>
+                <div className="my-6">
                 {meanings.map((mean)=>{
                     return <Phonetics phonetic={mean.phonetics}/>
-                })}</div> */}
-                <h3 className="text-xl indent-6 tracking-wide font-semibold text-teal-900">Definitions:</h3>
+                })}</div>
+                <div className="mt-4">
+                <h3 className="text-2xl mt-6 indent-6 tracking-wide font-semibold text-teal-900">Definitions:</h3>
                 { meanings.map((mean)=>{
                     return <Meanings mean={mean.meanings}/>
-                })}</> : 
+                })}</div></> : 
                 word !== '' ?
                 <div className="text-4xl flex items-center text-black text-center my-32 mx-auto bg-stone-100 p-4 rounded-md w-fit">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">

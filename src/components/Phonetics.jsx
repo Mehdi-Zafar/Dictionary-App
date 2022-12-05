@@ -1,16 +1,16 @@
-import ReactAudioPlayer from 'react-audio-player';
+import AudioPlayer from 'react-h5-audio-player';
+import 'react-h5-audio-player/lib/styles.css';
 
 const Phonetics = (props) => {
     return ( 
-        <div className="w-4/5">
+        <div className="w-full text-center">
             {(props.phonetic.length > 0) ? props.phonetic.map((phonetic)=>{
                 if(phonetic.audio !== ''){
                     return(
-                        <div className="m-2 shadow-md w-fit rounded-md">
+                        <div className="my-3 mx-auto shadow-md w-11/12 md:w-3/4">
                             {phonetic.audio ?
-                            <ReactAudioPlayer
+                            <AudioPlayer
                             src={phonetic.audio}
-                            controls
                             /> :
                             ""}
                         </div>
