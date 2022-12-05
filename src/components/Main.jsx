@@ -6,7 +6,6 @@ const Main = () => {
 
     const [word,setWord] = useState('')
     const [meanings,setMeanings] = useState(null)
-    const [phonetic,setPhonetic] = useState(false)
 
     useEffect(()=>{
         if(word !== ''){
@@ -15,16 +14,7 @@ const Main = () => {
                 .then(data=>setMeanings(data))
                 .catch(err=>console.log(err))
         }
-
-        setPhonetic(false)
     },[word])
-    const arr = Array.isArray(meanings) ? meanings.map((mean)=>mean.phonetics.length > 0) : null
-    let a;
-    if(arr !== null){
-        arr.forEach(element => {
-            a = a | element
-        });
-    }
 
     return ( 
         <div>
@@ -46,11 +36,10 @@ const Main = () => {
                 <h1 className="text-5xl font-medium text-center m-2 capitalize tracking-wide">{meanings ? word : ""}</h1>
                 {(Array.isArray(meanings) && word) ? 
                 <>
-                <div>
-                {(a>0 && phonetic) ? <h3 className="text-xl indent-6 tracking-wide font-semibold text-teal-900">Phonetics:</h3>: ""}
+                {/* <div>
                 {meanings.map((mean)=>{
-                    return <Phonetics phonetic={mean.phonetics} setPhonetic={setPhonetic}/>
-                })}</div>
+                    return <Phonetics phonetic={mean.phonetics}/>
+                })}</div> */}
                 <h3 className="text-xl indent-6 tracking-wide font-semibold text-teal-900">Definitions:</h3>
                 { meanings.map((mean)=>{
                     return <Meanings mean={mean.meanings}/>

@@ -5,7 +5,6 @@ const Phonetics = (props) => {
         <div className="w-4/5">
             {(props.phonetic.length > 0) ? props.phonetic.map((phonetic)=>{
                 if(phonetic.audio !== ''){
-                    props.setPhonetic(true)
                     return(
                         <div className="m-2 shadow-md w-fit rounded-md">
                             {phonetic.audio ?

@@ -31,9 +31,6 @@ const Meanings = (props) => {
                 )
             })}
             </h3>
-
-            
-            {/* <h2>Hello</h2> */}
         </div>
      );
 }
