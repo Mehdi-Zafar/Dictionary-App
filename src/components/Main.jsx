@@ -7,6 +7,8 @@ const Main = () => {
     const [word,setWord] = useState('')
     const [meanings,setMeanings] = useState(null)
 
+    console.log(meanings)
+
     useEffect(()=>{
         if(word !== ''){
             fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
@@ -33,17 +35,16 @@ const Main = () => {
                 </div>
             </div>
             <div className="m-2 md:w-4/6 mx-auto">
-                <h1 className="text-6xl font-medium text-center m-4 capitalize tracking-wide">{meanings ? word : ""}</h1>
+                <h1 className="text-2xl font-medium text-center m-4 capitalize tracking-wide md:text-6xl">{meanings ? word : ""}</h1>
                 {(Array.isArray(meanings) && word) ? 
                 <>
                 <div className="my-6">
-                {meanings.map((mean)=>{
-                    return <Phonetics phonetic={mean.phonetics}/>
-                })}</div>
+                {<Phonetics phonetic={meanings[0]?.phonetics}/>}
+                </div>
                 <div className="mt-4">
                 <h3 className="text-2xl mt-6 indent-6 tracking-wide font-semibold text-teal-900">Definitions:</h3>
                 { meanings.map((mean)=>{
-                    return <Meanings mean={mean.meanings}/>
+                    return <Meanings mean={mean?.meanings}/>
                 })}</div></> : 
                 word !== '' ?
                 <div className="text-4xl flex items-center text-black text-center my-32 mx-auto bg-stone-100 p-4 rounded-md w-fit">

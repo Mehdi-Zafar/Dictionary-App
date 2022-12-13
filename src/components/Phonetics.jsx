@@ -1,26 +1,24 @@
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 
-const Phonetics = (props) => {
+const Phonetics = ({phonetic}) => {
+    console.log(phonetic)
     return ( 
         <div className="w-full text-center">
-            {(props.phonetic.length > 0) ? props.phonetic.map((phonetic)=>{
-                if(phonetic.audio !== ''){
-                    return(
+            {(phonetic?.length > 0) ? 
+                    phonetic.map((phonetic)=>(
                         <div className="my-3 mx-auto shadow-md w-11/12 md:w-3/4">
-                            {phonetic.audio ?
+                            {phonetic?.audio ?
                             <AudioPlayer
-                            src={phonetic.audio}
+                            src={phonetic?.audio}
                             /> :
                             ""}
                         </div>
-                    )
-                }
-            }) : 
+            )) : 
                 ""
             }
         </div>
-     );
+     )
 }
  
 export default Phonetics;
